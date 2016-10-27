@@ -44,33 +44,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
         print(url.description)
-        let requestToken = BDBOAuth1Credential(queryString: url.query)
-        let twitterClient = BDBOAuth1SessionManager(baseURL: URL(string: "https://api.twitter.com"), consumerKey: "n1sYcM9yEWQaSf0jRaRZ1BA7u", consumerSecret: "Nm11u8ySaXZxha7BZSXhXiJ0d6H00vjJlHnXhim2Joq44KxMX2")
-        twitterClient?.fetchAccessToken(withPath: "oauth/access_token", method: "POST", requestToken: requestToken,
-                                        success: { (accessToken:BDBOAuth1Credential?) in
-                                            print("Access Token: \(accessToken?.token)")
-                                            _ = twitterClient?.get("1.1/account/verify_credentials.json", parameters: nil, progress: nil,
-                                                               success: { (task: URLSessionDataTask?, response: Any?) in
-                                                                print("Task: \(task) Account: \(response)")
-                                                                let userDictionary = response as! NSDictionary
-                                                                let user = User(dictionary: userDictionary)
-                                                                print(user)
-                                                }, failure: { (task: URLSessionDataTask?, error: Error) in
-                                                    print("Error: \(error.localizedDescription)")
-                                            })
-                                            
-                                            _ = twitterClient?.get("1.1/statuses/user_timeline.json", parameters: nil, progress: nil,
-                                                                success: { (task: URLSessionDataTask, response: Any?) in
-                                                                    let dictionaries = response as! [NSDictionary]
-                                                                    let tweets = Tweet.tweetsWithArray(dictionaries: dictionaries)
-                                                                    print(tweets)
-                                                                },
-                                                                failure: { (task:URLSessionDataTask?, error: Error) in
-                                                                    
-                                                            })
-                                        }, failure: { (error: Error?) in
-                                            print("Error: \(error?.localizedDescription)")
-                                    })
+        
+        TwitterManager.sharedInstance?.handleOpenUrl(url: url)
         return true
     }
 }
