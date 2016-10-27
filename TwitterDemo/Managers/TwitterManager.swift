@@ -37,19 +37,11 @@ class TwitterManager: BDBOAuth1SessionManager {
         fetchAccessToken(withPath: "oauth/access_token", method: "POST", requestToken: requestToken,
                                         success: { (accessToken:BDBOAuth1Credential?) in
                                             print("Access Token: \(accessToken?.token)")
-                                            self.currentAccount()
-                                            self.homeTimeline(success: { (tweets: [Tweet]) in
-                                                for tweet in tweets {
-                                                    print(tweet.text)
-                                                }
-                                                self.loginSucess?()
-                                                }, failure: { (error: NSError) in
-                                                    print(error.localizedDescription)
-                                                    self.loginFailure?(error)
-                                            })
-            }, failure: { (error: Error?) in
-                print("Error: \(error?.localizedDescription)")
-        })
+                                            self.loginSucess?()
+                                        },
+                                        failure: { (error: Error?) in
+                                            print("Error: \(error?.localizedDescription)")
+                                        })
     }
     
     func currentAccount() {
