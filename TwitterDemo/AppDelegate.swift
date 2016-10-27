@@ -55,17 +55,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                                                                 let userDictionary = response as! NSDictionary
                                                                 let user = User(dictionary: userDictionary)
                                                                 print(user)
-//                                                                print("User Name: \(user["name"]!)")
-//                                                                print("Screen Name: \(user["screen_name"]!)")
-//                                                                print("Profile URL: \(user["profile_image_url_https"]!)")
-//                                                                print("Description: \(user["description"]!)")
                                                 }, failure: { (task: URLSessionDataTask?, error: Error) in
                                                     print("Error: \(error.localizedDescription)")
                                             })
                                             
                                             _ = twitterClient?.get("1.1/statuses/user_timeline.json", parameters: nil, progress: nil,
                                                                 success: { (task: URLSessionDataTask, response: Any?) in
-                                                                    let tweets = response as! NSArray
+                                                                    let dictionaries = response as! [NSDictionary]
+                                                                    let tweets = Tweet.tweetsWithArray(dictionaries: dictionaries)
                                                                     print(tweets)
                                                                 },
                                                                 failure: { (task:URLSessionDataTask?, error: Error) in
