@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1B32D30E1DC31BC40064E537 /* twitter-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 1B32D30D1DC31BC40064E537 /* twitter-logo.png */; };
+		1B32D3101DC3263A0064E537 /* TweetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B32D30F1DC3263A0064E537 /* TweetCell.swift */; };
 		1B4011B91DBEE52000DC3658 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B4011B81DBEE52000DC3658 /* AppDelegate.swift */; };
 		1B4011BE1DBEE52000DC3658 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B4011BC1DBEE52000DC3658 /* Main.storyboard */; };
 		1B4011C01DBEE52000DC3658 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1B4011BF1DBEE52000DC3658 /* Assets.xcassets */; };
@@ -22,6 +23,7 @@
 
 /* Begin PBXFileReference section */
 		1B32D30D1DC31BC40064E537 /* twitter-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "twitter-logo.png"; sourceTree = "<group>"; };
+		1B32D30F1DC3263A0064E537 /* TweetCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TweetCell.swift; path = ViewControllers/TweetCell.swift; sourceTree = "<group>"; };
 		1B4011B51DBEE52000DC3658 /* TwitterDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TwitterDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1B4011B81DBEE52000DC3658 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1B4011BD1DBEE52000DC3658 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -55,6 +57,7 @@
 			children = (
 				1B959DAB1DC029E30077972F /* LoginViewController.swift */,
 				1BA3C4201DC1E4C000B4D12A /* TweetsViewController.swift */,
+				1B32D30F1DC3263A0064E537 /* TweetCell.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -308,6 +311,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1B7A67121DC1845F00FCF5B0 /* User.swift in Sources */,
+				1B32D3101DC3263A0064E537 /* TweetCell.swift in Sources */,
 				1BA3C41E1DC1D6CC00B4D12A /* TwitterManager.swift in Sources */,
 				1B7A67141DC1846E00FCF5B0 /* Tweet.swift in Sources */,
 				1B959DAC1DC029E30077972F /* LoginViewController.swift in Sources */,
