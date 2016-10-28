@@ -10,6 +10,8 @@ import UIKit
 import BDBOAuth1Manager
 
 class TwitterManager: BDBOAuth1SessionManager {
+    
+    static let userDidLogoutNotification = NSNotification.Name("userDidLogoutNotification")
 
     static let sharedInstance = TwitterManager(baseURL: URL(string: "https://api.twitter.com"), consumerKey: "n1sYcM9yEWQaSf0jRaRZ1BA7u", consumerSecret: "Nm11u8ySaXZxha7BZSXhXiJ0d6H00vjJlHnXhim2Joq44KxMX2")
     
@@ -31,28 +33,44 @@ class TwitterManager: BDBOAuth1SessionManager {
                                             self.loginFailure?(error as! NSError)
         })
     }
+    
+    func logout() {
+        User.currentUser = nil
+        deauthorize()
+        NotificationCenter.default.post(name: TwitterManager.userDidLogoutNotification, object: nil)
+    }
 
     func handleOpenUrl(url: URL) {
         let requestToken = BDBOAuth1Credential(queryString: url.query)
         fetchAccessToken(withPath: "oauth/access_token", method: "POST", requestToken: requestToken,
                                         success: { (accessToken:BDBOAuth1Credential?) in
                                             print("Access Token: \(accessToken?.token)")
-                                            self.loginSucess?()
+                                            
+                                            self.currentAccount(
+                                                success: { (user: User) in
+                                                    User.currentUser = user
+                                                    self.loginSucess?()
+                                                },
+                                                failure: { (error: NSError) in
+                                                    self.loginFailure?(error)
+                                            })
                                         },
                                         failure: { (error: Error?) in
                                             print("Error: \(error?.localizedDescription)")
                                         })
     }
     
-    func currentAccount() {
+    func currentAccount(success: @escaping (User) -> (), failure: @escaping (NSError) -> ()) {
         _ = get("1.1/account/verify_credentials.json", parameters: nil, progress: nil,
                                success: { (task: URLSessionDataTask?, response: Any?) in
                                 print("Task: \(task) Account: \(response)")
                                 let userDictionary = response as! NSDictionary
                                 let user = User(dictionary: userDictionary)
                                 print(user)
+                                success(user)
             }, failure: { (task: URLSessionDataTask?, error: Error) in
                 print("Error: \(error.localizedDescription)")
+                failure(error as NSError)
         })
     }
     

@@ -40,7 +40,7 @@
             </objects>
             <point key="canvasLocation" x="-1562" y="-77"/>
         </scene>
-        <!--Tweets View Controller-->
+        <!--Tweets-->
         <scene sceneID="Byw-4O-YQX">
             <objects>
                 <viewController id="22T-JR-zks" customClass="TweetsViewController" customModule="TwitterDemo" customModuleProvider="target" sceneMemberID="viewController">
@@ -49,7 +49,13 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </tableView>
-                    <navigationItem key="navigationItem" id="PYz-tc-feG"/>
+                    <navigationItem key="navigationItem" title="Tweets" id="PYz-tc-feG">
+                        <barButtonItem key="leftBarButtonItem" title="Logout" id="pXN-gl-MU8">
+                            <connections>
+                                <action selector="onLogoutButton:" destination="22T-JR-zks" id="va0-3E-vMk"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="62Q-3p-9xH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -58,7 +64,7 @@
         <!--Navigation Controller-->
         <scene sceneID="JeT-oM-Ioo">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="zPO-Ah-XfM" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="TweetsNavigationViewController" automaticallyAdjustsScrollViewInsets="NO" id="zPO-Ah-XfM" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="4Gj-9e-BC9">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>

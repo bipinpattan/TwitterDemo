@@ -17,6 +17,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        if User.currentUser != nil {
+            print("User currently logged in")
+            let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+            let vc = storyBoard.instantiateViewController(withIdentifier: "TweetsNavigationViewController")
+            window?.rootViewController = vc
+            NotificationCenter.default.addObserver(forName: TwitterManager.userDidLogoutNotification, object: nil, queue: OperationQueue.main, using: { (Notification) in
+                let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+                let vc = storyBoard.instantiateInitialViewController()
+                self.window?.rootViewController = vc
+            })
+        }
+        else {
+            print("No user logged in.")
+        }
         return true
     }
 
