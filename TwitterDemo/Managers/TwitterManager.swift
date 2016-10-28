@@ -75,7 +75,7 @@ class TwitterManager: BDBOAuth1SessionManager {
     }
     
     func homeTimeline(success: @escaping ([Tweet]) -> (), failure: @escaping (NSError) -> ()) {
-        _ = get("1.1/statuses/user_timeline.json", parameters: nil, progress: nil,
+        _ = get("1.1/statuses/home_timeline.json", parameters: nil, progress: nil,
                                 success: { (task: URLSessionDataTask, response: Any?) in
                                     let dictionaries = response as! [NSDictionary]
                                     let tweets = Tweet.tweetsWithArray(dictionaries: dictionaries)
