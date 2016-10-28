@@ -18,19 +18,34 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="czd-gW-RNl">
-                                <frame key="frameInset" minX="109" minY="312" width="156" height="42"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.1647058824" green="0.64705882349999999" blue="0.85882352939999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" title="Log In with Twitter">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="twitter-logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="z7M-6c-2PL">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="240" id="3gg-7z-tsw"/>
+                                    <constraint firstAttribute="height" constant="240" id="SrX-jb-Az9"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="czd-gW-RNl">
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="156" id="N5a-Le-BAm"/>
+                                    <constraint firstAttribute="height" constant="42" id="glK-ow-xV0"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
+                                <state key="normal" title="Log In">
+                                    <color key="titleColor" red="0.1843137255" green="0.75686274509999996" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="onLoginButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="mHf-jh-XLo"/>
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.18431372549019609" green="0.75686274509803919" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="czd-gW-RNl" firstAttribute="top" secondItem="z7M-6c-2PL" secondAttribute="bottom" constant="40" id="KjE-p7-8vI"/>
+                            <constraint firstItem="czd-gW-RNl" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Skj-DG-dgl"/>
+                            <constraint firstItem="z7M-6c-2PL" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="W8T-Tf-S0B"/>
+                            <constraint firstItem="z7M-6c-2PL" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="ffX-mM-GWz"/>
+                        </constraints>
                     </view>
                     <connections>
                         <segue destination="zPO-Ah-XfM" kind="presentation" identifier="LoginSegue" id="upb-gA-aRr"/>
@@ -38,7 +53,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1562" y="-77"/>
+            <point key="canvasLocation" x="-1562.4000000000001" y="-77.811094452773617"/>
         </scene>
         <!--Tweets-->
         <scene sceneID="Byw-4O-YQX">
@@ -80,4 +95,7 @@
             <point key="canvasLocation" x="-852" y="-79.610194902548727"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="twitter-logo.png" width="240" height="240"/>
+    </resources>
 </document>
