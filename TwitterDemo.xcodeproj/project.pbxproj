@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		1B32D30E1DC31BC40064E537 /* twitter-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 1B32D30D1DC31BC40064E537 /* twitter-logo.png */; };
 		1B4011B91DBEE52000DC3658 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B4011B81DBEE52000DC3658 /* AppDelegate.swift */; };
-		1B4011BB1DBEE52000DC3658 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B4011BA1DBEE52000DC3658 /* ViewController.swift */; };
 		1B4011BE1DBEE52000DC3658 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B4011BC1DBEE52000DC3658 /* Main.storyboard */; };
 		1B4011C01DBEE52000DC3658 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1B4011BF1DBEE52000DC3658 /* Assets.xcassets */; };
 		1B4011C31DBEE52000DC3658 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B4011C11DBEE52000DC3658 /* LaunchScreen.storyboard */; };
@@ -25,7 +24,6 @@
 		1B32D30D1DC31BC40064E537 /* twitter-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "twitter-logo.png"; sourceTree = "<group>"; };
 		1B4011B51DBEE52000DC3658 /* TwitterDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TwitterDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1B4011B81DBEE52000DC3658 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		1B4011BA1DBEE52000DC3658 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		1B4011BD1DBEE52000DC3658 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1B4011BF1DBEE52000DC3658 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1B4011C21DBEE52000DC3658 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -98,7 +96,6 @@
 				1BA3C41F1DC1D6D400B4D12A /* Managers */,
 				1B7A67101DC1844700FCF5B0 /* Models */,
 				1B32D30C1DC31BC40064E537 /* Resources */,
-				1B4011BA1DBEE52000DC3658 /* ViewController.swift */,
 				1B317E221DBEE8B100B7385F /* ViewControllers */,
 			);
 			path = TwitterDemo;
@@ -315,7 +312,6 @@
 				1B7A67141DC1846E00FCF5B0 /* Tweet.swift in Sources */,
 				1B959DAC1DC029E30077972F /* LoginViewController.swift in Sources */,
 				1BA3C4211DC1E4C000B4D12A /* TweetsViewController.swift in Sources */,
-				1B4011BB1DBEE52000DC3658 /* ViewController.swift in Sources */,
 				1B4011B91DBEE52000DC3658 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

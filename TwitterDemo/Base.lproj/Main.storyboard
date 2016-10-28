@@ -55,7 +55,7 @@
             </objects>
             <point key="canvasLocation" x="-1562.4000000000001" y="-77.811094452773617"/>
         </scene>
-        <!--Tweets-->
+        <!--Home-->
         <scene sceneID="Byw-4O-YQX">
             <objects>
                 <viewController id="22T-JR-zks" customClass="TweetsViewController" customModule="TwitterDemo" customModuleProvider="target" sceneMemberID="viewController">
@@ -64,7 +64,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Tweets" id="PYz-tc-feG">
+                    <navigationItem key="navigationItem" title="Home" id="PYz-tc-feG">
                         <barButtonItem key="leftBarButtonItem" title="Logout" id="pXN-gl-MU8">
                             <connections>
                                 <action selector="onLogoutButton:" destination="22T-JR-zks" id="va0-3E-vMk"/>
