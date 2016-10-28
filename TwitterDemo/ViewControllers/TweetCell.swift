@@ -29,7 +29,15 @@ class TweetCell: UITableViewCell {
 
     var tweet: Tweet! {
         didSet {
-//            profileImageView.setImageWith(tweet.)
+            if let profileURL = tweet.user?.profileUrl {
+                profileImageView.setImageWith(profileURL)
+            }
+            if let userName = tweet.user?.name {
+                userNameLabel.text = userName
+            }
+            if let screenName = tweet.user?.screenName {
+                userHandleLabel.text = screenName
+            }
             tweetTextLabel.text = tweet.text
         }
     }
