@@ -40,8 +40,27 @@ class TweetCell: UITableViewCell {
             if let screenName = tweet.user?.screenName {
                 userHandleLabel.text = "@\(screenName)"
             }
+            timeLabel.text = timeFormat(withDate: tweet.timeStamp)
             tweetTextLabel.text = tweet.text
         }
     }
     
+    func timeFormat(withDate date: Date?) -> String {
+        if let date = date {
+            let elapsed = Int(Date().timeIntervalSince(date))
+            if elapsed < 60 {
+                return "\(elapsed) secs"
+            } else if elapsed < 3600 {
+                let mins = elapsed/60
+                return mins == 1 ? "\(mins) min" : "\(mins) mins"
+            } else if elapsed < 86400 {
+                let hrs = (elapsed/3600)
+                return hrs == 1 ? "\(hrs) hr" : "\(hrs) hrs"
+            } else {
+                let days = (elapsed/86400)
+                return days == 1 ? "\(days) day" : "\(days) days"
+            }
+        }
+        return ""
+    }
 }
