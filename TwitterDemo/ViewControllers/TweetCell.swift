@@ -31,12 +31,14 @@ class TweetCell: UITableViewCell {
         didSet {
             if let profileURL = tweet.user?.profileUrl {
                 profileImageView.setImageWith(profileURL)
+                profileImageView.layer.cornerRadius = 5
+                profileImageView.clipsToBounds = true
             }
             if let userName = tweet.user?.name {
                 userNameLabel.text = userName
             }
             if let screenName = tweet.user?.screenName {
-                userHandleLabel.text = screenName
+                userHandleLabel.text = "@\(screenName)"
             }
             tweetTextLabel.text = tweet.text
         }
