@@ -57,9 +57,9 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
     func setupUI() {
         tableView.delegate = self
         tableView.dataSource = self
-//        tableView.rowHeight = UITableViewAutomaticDimension
-tableView.rowHeight = 120
-//        tableView.estimatedRowHeight = 120
+        tableView.rowHeight = UITableViewAutomaticDimension
+//tableView.rowHeight = 120
+        tableView.estimatedRowHeight = 120
         
     }
     
