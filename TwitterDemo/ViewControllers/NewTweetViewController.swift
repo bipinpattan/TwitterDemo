@@ -8,9 +8,17 @@
 
 import UIKit
 
+protocol NewTweetViewControllerDelegate : class {
+    func newTweetViewController(newTweetViewController ntvc: NewTweetViewController, didUpdateStatusWithText text: String!)
+    func newTweetViewControllerFailedToUpdateStatus(newTweetViewController ntvc:  NewTweetViewController)
+    func newTweetViewControllerCancelled(newTweetViewController ntvc: NewTweetViewController)
+}
+
 class NewTweetViewController: UIViewController, UITextViewDelegate {
 
     @IBOutlet weak var tweetTextView: UITextView!
+    weak var delegate: NewTweetViewControllerDelegate?
+    
     let charsLeft = 140
     
     override func viewDidLoad() {
@@ -27,13 +35,19 @@ class NewTweetViewController: UIViewController, UITextViewDelegate {
     @IBAction func onTweetButton(_ sender: AnyObject) {
         print("Tweet - \(tweetTextView.text!)")
         TwitterManager.sharedInstance?.updateStatus(statusText: tweetTextView.text!, success: { 
-            print("Update status successful")
+                print("Update status successful")
+                self.delegate?.newTweetViewController(newTweetViewController: self, didUpdateStatusWithText: self.tweetTextView.text!)
+                self.dismiss(animated: true, completion: nil)
             }, failure: { (error: NSError) in
                 print("Error updating status: \(error.localizedDescription)")
+                self.delegate?.newTweetViewControllerFailedToUpdateStatus(newTweetViewController: self)
+                self.dismiss(animated: true, completion: nil)
         })
     }
 
     @IBAction func onCancelButton(_ sender: AnyObject) {
+        delegate?.newTweetViewControllerCancelled(newTweetViewController: self)
+        self.dismiss(animated: true, completion: nil)
     }
     
     // MARK :- Delegates

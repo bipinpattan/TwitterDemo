@@ -9,7 +9,7 @@
 import UIKit
 import MBProgressHUD
 
-class TweetsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate {
+class TweetsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate, NewTweetViewControllerDelegate {
     var tweets = [Tweet]()
     @IBOutlet var tableView: UITableView!
     var loadingMoreView: ActivityView?
@@ -64,6 +64,33 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
         }
     }
     
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let navigationViewController = segue.destination as! UINavigationController
+        switch navigationViewController.topViewController {
+            case is NewTweetViewController:
+                let newTweetViewController = navigationViewController.topViewController as! NewTweetViewController
+                newTweetViewController.delegate = self
+                break
+            
+        default:
+                break
+        }
+    }
+
+        //MARK: NewTweetViewControllerDelegate
+    func newTweetViewController(newTweetViewController ntvc: NewTweetViewController, didUpdateStatusWithText text: String!) {
+        print("New Tweet - \(text)")
+    }
+    
+    func newTweetViewControllerFailedToUpdateStatus(newTweetViewController: NewTweetViewController) {
+        print("failed to update status")
+    }
+    
+    func newTweetViewControllerCancelled(newTweetViewController: NewTweetViewController) {
+        print("User cancelled new tweet")
+    }
+    
     // MARK: - Actions
     @IBAction func onLogoutButton(_ sender: AnyObject) {
         TwitterManager.sharedInstance?.logout()
@@ -99,14 +126,4 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
         })
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
