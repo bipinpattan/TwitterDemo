@@ -15,6 +15,8 @@ class TweetCell: UITableViewCell {
     @IBOutlet weak var userHandleLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var tweetTextLabel: UILabel!
+    @IBOutlet weak var favoritesNumberLabel: UILabel!
+    @IBOutlet weak var retweetsNumberLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -42,6 +44,8 @@ class TweetCell: UITableViewCell {
             }
             timeLabel.text = timeFormat(withDate: tweet.timeStamp)
             tweetTextLabel.text = tweet.text
+            favoritesNumberLabel.text = "\(tweet.favoritesCount)"
+            retweetsNumberLabel.text = "\(tweet.retweetCount)"
         }
     }
     
