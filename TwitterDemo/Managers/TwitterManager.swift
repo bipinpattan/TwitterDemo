@@ -1,4 +1,4 @@
-//
+y//
 //  TwitterManager.swift
 //  TwitterDemo
 //
@@ -86,11 +86,14 @@ class TwitterManager: BDBOAuth1SessionManager {
                                 })
     }
 
-    func updateStatus(statusText status: String!, success: @escaping () -> (), failure: @escaping (NSError) -> ()) {
-        let queryParams = ["status" : status];
+    func updateStatus(statusText status: String!, success: @escaping (Tweet) -> (), failure: @escaping (NSError) -> ()) {
+        let queryParams = ["status" : status!];
         _ = post("1.1/statuses/update.json", parameters: queryParams, progress: nil,
                  success: { (task: URLSessionDataTask, response: Any?) in
-                    success()
+                    let dictionaries = response as! NSDictionary
+                    let tweets = Tweet.tweetsWithArray(dictionaries: [dictionaries])
+                    print(tweets)
+                    success(tweets[0])
             },
                  failure: { (task:URLSessionDataTask?, error: Error) in
                     failure(error as NSError)

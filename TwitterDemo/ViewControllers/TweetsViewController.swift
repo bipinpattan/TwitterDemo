@@ -78,9 +78,11 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
         }
     }
 
-        //MARK: NewTweetViewControllerDelegate
-    func newTweetViewController(newTweetViewController ntvc: NewTweetViewController, didUpdateStatusWithText text: String!) {
-        print("New Tweet - \(text)")
+    //MARK: NewTweetViewControllerDelegate
+    func newTweetViewController(newTweetViewController ntvc: NewTweetViewController, didUpdateStatusWithTweet tweet: Tweet!) {
+        print("New Tweet - \(tweet)")
+        tweets.insert(tweet, at: 0)
+        tableView.reloadData()
     }
     
     func newTweetViewControllerFailedToUpdateStatus(newTweetViewController: NewTweetViewController) {

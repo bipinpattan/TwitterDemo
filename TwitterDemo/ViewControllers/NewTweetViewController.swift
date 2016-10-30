@@ -9,7 +9,7 @@
 import UIKit
 
 protocol NewTweetViewControllerDelegate : class {
-    func newTweetViewController(newTweetViewController ntvc: NewTweetViewController, didUpdateStatusWithText text: String!)
+    func newTweetViewController(newTweetViewController ntvc: NewTweetViewController, didUpdateStatusWithTweet tweet: Tweet!)
     func newTweetViewControllerFailedToUpdateStatus(newTweetViewController ntvc:  NewTweetViewController)
     func newTweetViewControllerCancelled(newTweetViewController ntvc: NewTweetViewController)
 }
@@ -34,9 +34,9 @@ class NewTweetViewController: UIViewController, UITextViewDelegate {
     // MARK :- Actions
     @IBAction func onTweetButton(_ sender: AnyObject) {
         print("Tweet - \(tweetTextView.text!)")
-        TwitterManager.sharedInstance?.updateStatus(statusText: tweetTextView.text!, success: { 
+        TwitterManager.sharedInstance?.updateStatus(statusText: tweetTextView.text!, success: { (tweet: Tweet) in
                 print("Update status successful")
-                self.delegate?.newTweetViewController(newTweetViewController: self, didUpdateStatusWithText: self.tweetTextView.text!)
+                self.delegate?.newTweetViewController(newTweetViewController: self, didUpdateStatusWithTweet: tweet)
                 self.dismiss(animated: true, completion: nil)
             }, failure: { (error: NSError) in
                 print("Error updating status: \(error.localizedDescription)")
