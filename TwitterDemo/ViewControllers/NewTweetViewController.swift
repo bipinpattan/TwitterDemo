@@ -19,11 +19,12 @@ class NewTweetViewController: UIViewController, UITextViewDelegate {
     @IBOutlet weak var tweetTextView: UITextView!
     weak var delegate: NewTweetViewControllerDelegate?
     
-    let charsLeft = 140
+    var charsLeft = 140
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        refreshUI()
     }
 
     override func didReceiveMemoryWarning() {
@@ -53,15 +54,19 @@ class NewTweetViewController: UIViewController, UITextViewDelegate {
     // MARK :- Delegates
     // MARK - UITextViewDelegate
     public func textViewDidChange(_ textView: UITextView) {
-        
+        refreshUI()
     }
     
     // MARK :- Helpers
     func setupUI() {
-        self.navigationItem.title = "Compose 140"
         self.tweetTextView.delegate = self
         self.tweetTextView.text = ""
         self.tweetTextView.becomeFirstResponder()
+    }
+    
+    func refreshUI() {
+        charsLeft = 140 - tweetTextView.text.characters.count
+        self.navigationItem.title = "Compose \(charsLeft)"
     }
     
     /*
