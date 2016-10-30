@@ -148,6 +148,7 @@
                                     <outlet property="tweetTextLabel" destination="KHG-jW-sY1" id="MJe-Oh-FO5"/>
                                     <outlet property="userHandleLabel" destination="tbB-jj-i8w" id="ifS-QS-ZIB"/>
                                     <outlet property="userNameLabel" destination="ptV-nE-TmZ" id="9XJ-d7-bW5"/>
+                                    <segue destination="uc8-aX-FIA" kind="presentation" id="M7i-iB-N01"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -185,10 +186,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="43Y-Hw-5Az">
-                                <frame key="frameInset" width="375" height="667"/>
+                                <frame key="frameInset" minY="-20" width="375" height="667"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <mutableString key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</mutableString>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
@@ -233,6 +234,31 @@
             </objects>
             <point key="canvasLocation" x="-852" y="-79.610194902548727"/>
         </scene>
+        <!--Tweet Details-->
+        <scene sceneID="N25-cJ-1d9">
+            <objects>
+                <viewController id="X2x-H9-HY0" customClass="TweetDetailsViewController" customModule="TwitterDemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="3BA-Mc-FzH"/>
+                        <viewControllerLayoutGuide type="bottom" id="Qoc-p6-mzo"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Lmy-5h-g4X">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Tweet Details" id="lfB-vM-FVG">
+                        <barButtonItem key="rightBarButtonItem" title="Done" id="cYd-Df-N2t">
+                            <connections>
+                                <action selector="onDoneButton:" destination="X2x-H9-HY0" id="BU0-fa-zdT"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aXz-MC-C6l" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1432.8" y="-1057.4212893553224"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="X2T-sQ-Fq2">
             <objects>
@@ -250,6 +276,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="i7b-qq-MJc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="621.60000000000002" y="-79.610194902548727"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="flW-tT-vtJ">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="uc8-aX-FIA" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="6JR-py-xXi">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="X2x-H9-HY0" kind="relationship" relationship="rootViewController" id="znp-qP-FEc"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JEF-tW-0K2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="493.60000000000002" y="-1057.4212893553224"/>
         </scene>
     </scenes>
     <resources>
