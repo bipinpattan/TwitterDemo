@@ -7,13 +7,13 @@
 //
 
 import UIKit
-import MBProgressHUD
 
 class TweetsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate, NewTweetViewControllerDelegate {
     var tweets = [Tweet]()
     @IBOutlet var tableView: UITableView!
     var loadingMoreView: ActivityView?
     var isMoreDataLoading = false
+    var refreshControl = UIRefreshControl()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -98,12 +98,18 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
         TwitterManager.sharedInstance?.logout()
     }
 
+    func refreshControlAction(refreshControl: UIRefreshControl) {
+        startNetworkActivity()
+    }
+    
     // MARK: - Helpers
     func setupUI() {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 120
+        refreshControl.addTarget(self, action: #selector(refreshControlAction(refreshControl:)), for: UIControlEvents.valueChanged)
+        tableView.insertSubview(self.refreshControl, at: 0)
         
         // Set up Infinite Scroll loading indicator
         let frame = CGRect(x: 0, y: tableView.contentSize.height, width: tableView.bounds.size.width, height: ActivityView.defaultHeight)
@@ -121,10 +127,12 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
                 self.isMoreDataLoading = false
                 self.loadingMoreView!.stopAnimating()
                 self.tableView.reloadData()
+                self.refreshControl.endRefreshing()
             }, failure: { (error: NSError) in
                 print("Error loading tweets: \(error.localizedDescription)")
                 self.loadingMoreView!.stopAnimating()
                 self.isMoreDataLoading = false
+                self.refreshControl.endRefreshing()                
         })
     }
     
