@@ -26,6 +26,27 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
         // Dispose of any resources that can be recreated.
     }
     
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let navigationViewController = segue.destination as! UINavigationController
+        switch navigationViewController.topViewController {
+        case is NewTweetViewController:
+            let newTweetViewController = navigationViewController.topViewController as! NewTweetViewController
+            newTweetViewController.delegate = self
+            break
+
+        case is TweetDetailsViewController:
+            let cell = sender as! UITableViewCell
+            let indexPath = self.tableView.indexPath(for: cell)
+            let tweet = tweets[(indexPath?.row)!]
+            let detailViewController = navigationViewController.topViewController as! TweetDetailsViewController
+            detailViewController.tweet = tweet
+            
+        default:
+            break
+        }
+    }
+    
     // MARK:- Delegate callbacks
     // MARK: UITableViewDataSource
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -64,20 +85,6 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
         }
     }
     
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let navigationViewController = segue.destination as! UINavigationController
-        switch navigationViewController.topViewController {
-            case is NewTweetViewController:
-                let newTweetViewController = navigationViewController.topViewController as! NewTweetViewController
-                newTweetViewController.delegate = self
-                break
-            
-        default:
-                break
-        }
-    }
-
     //MARK: NewTweetViewControllerDelegate
     func newTweetViewController(newTweetViewController ntvc: NewTweetViewController, didUpdateStatusWithTweet tweet: Tweet!) {
         print("New Tweet - \(tweet)")
