@@ -85,4 +85,15 @@ class TwitterManager: BDBOAuth1SessionManager {
                                     failure(error as NSError)
                                 })
     }
+
+    func updateStatus(statusText status: String!, success: @escaping () -> (), failure: @escaping (NSError) -> ()) {
+        let queryParams = ["status" : status];
+        _ = post("1.1/statuses/update.json", parameters: queryParams, progress: nil,
+                 success: { (task: URLSessionDataTask, response: Any?) in
+                    success()
+            },
+                 failure: { (task:URLSessionDataTask?, error: Error) in
+                    failure(error as NSError)
+        })
+    }
 }

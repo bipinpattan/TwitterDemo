@@ -26,6 +26,11 @@ class NewTweetViewController: UIViewController, UITextViewDelegate {
     // MARK :- Actions
     @IBAction func onTweetButton(_ sender: AnyObject) {
         print("Tweet - \(tweetTextView.text!)")
+        TwitterManager.sharedInstance?.updateStatus(statusText: tweetTextView.text!, success: { 
+            print("Update status successful")
+            }, failure: { (error: NSError) in
+                print("Error updating status: \(error.localizedDescription)")
+        })
     }
 
     @IBAction func onCancelButton(_ sender: AnyObject) {
