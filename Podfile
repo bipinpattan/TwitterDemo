@@ -8,5 +8,5 @@ target 'TwitterDemo' do
   # Pods for TwitterDemo
   pod 'AFNetworking', '3.0.0'
   pod 'BDBOAuth1Manager', '2.0.0'
-
+  pod 'MBProgressHUD'
 end

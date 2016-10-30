@@ -7,10 +7,13 @@
 //
 
 import UIKit
+import MBProgressHUD
 
-class TweetsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class TweetsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate {
     var tweets = [Tweet]()
     @IBOutlet var tableView: UITableView!
+    var loadingMoreView: ActivityView?
+    var isMoreDataLoading = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,19 +26,6 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
         // Dispose of any resources that can be recreated.
     }
     
-    func startNetworkActivity() {
-        TwitterManager.sharedInstance?.homeTimeline(
-        success: { (tweets: [Tweet]) in
-                self.tweets = tweets
-                for tweet in tweets {
-                    print(tweet)
-                }
-                self.tableView.reloadData()
-            }, failure: { (error: NSError) in
-                print("Error loading tweets: \(error.localizedDescription)")
-        })
-    }
-
     // MARK:- Delegate callbacks
     // MARK: UITableViewDataSource
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -48,6 +38,27 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
         return cell
     }
     
+    // MARK: UIScrollViewDelegate
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if (!isMoreDataLoading) {
+            // Calculate the position of one screen length before the bottom of the results
+            let scrollViewContentHeight = tableView.contentSize.height
+            let scrollOffsetThreshold = scrollViewContentHeight - tableView.bounds.size.height
+            
+            // When the user has scrolled past the threshold, start requesting
+            if(scrollView.contentOffset.y > scrollOffsetThreshold && tableView.isDragging) {
+                isMoreDataLoading = true
+                
+                startNetworkActivity()
+                
+                // Update position of loadingMoreView, and start loading indicator
+                let frame = CGRect(x: 0, y:tableView.contentSize.height, width: tableView.bounds.size.width, height: ActivityView.defaultHeight)
+                loadingMoreView?.frame = frame
+                loadingMoreView!.startAnimating()
+            }
+        }
+    }
+    
     // MARK: - Actions
     @IBAction func onLogoutButton(_ sender: AnyObject) {
         TwitterManager.sharedInstance?.logout()
@@ -58,9 +69,29 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
         tableView.delegate = self
         tableView.dataSource = self
         tableView.rowHeight = UITableViewAutomaticDimension
-//tableView.rowHeight = 120
         tableView.estimatedRowHeight = 120
         
+        // Set up Infinite Scroll loading indicator
+        let frame = CGRect(x: 0, y: tableView.contentSize.height, width: tableView.bounds.size.width, height: ActivityView.defaultHeight)
+        loadingMoreView = ActivityView(frame: frame)
+        loadingMoreView!.isHidden = true
+        tableView.addSubview(loadingMoreView!)
+        
+    }
+    
+    func startNetworkActivity() {
+        self.loadingMoreView!.startAnimating()
+        TwitterManager.sharedInstance?.homeTimeline(
+            success: { (tweets: [Tweet]) in
+                self.tweets.append(contentsOf: tweets)
+                self.isMoreDataLoading = false
+                self.loadingMoreView!.stopAnimating()
+                self.tableView.reloadData()
+            }, failure: { (error: NSError) in
+                print("Error loading tweets: \(error.localizedDescription)")
+                self.loadingMoreView!.stopAnimating()
+                self.isMoreDataLoading = false
+        })
     }
     
     /*
