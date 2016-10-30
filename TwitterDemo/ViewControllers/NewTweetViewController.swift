@@ -8,12 +8,14 @@
 
 import UIKit
 
-class NewTweetViewController: UIViewController {
+class NewTweetViewController: UIViewController, UITextViewDelegate {
 
+    @IBOutlet weak var tweetTextView: UITextView!
+    let charsLeft = 140
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        setupUI()
     }
 
     override func didReceiveMemoryWarning() {
@@ -21,7 +23,28 @@ class NewTweetViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    // MARK :- Actions
+    @IBAction func onTweetButton(_ sender: AnyObject) {
+        print("Tweet - \(tweetTextView.text!)")
+    }
 
+    @IBAction func onCancelButton(_ sender: AnyObject) {
+    }
+    
+    // MARK :- Delegates
+    // MARK - UITextViewDelegate
+    public func textViewDidChange(_ textView: UITextView) {
+        
+    }
+    
+    // MARK :- Helpers
+    func setupUI() {
+        self.navigationItem.title = "Compose 140"
+        self.tweetTextView.delegate = self
+        self.tweetTextView.text = ""
+        self.tweetTextView.becomeFirstResponder()
+    }
+    
     /*
     // MARK: - Navigation
 
