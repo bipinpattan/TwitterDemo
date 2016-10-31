@@ -175,7 +175,7 @@
                                 <action selector="onLogoutButton:" destination="22T-JR-zks" id="va0-3E-vMk"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="New" id="THs-fO-xul">
+                        <barButtonItem key="rightBarButtonItem" systemItem="reply" id="THs-fO-xul">
                             <connections>
                                 <segue destination="Zbn-nS-Z1g" kind="presentation" id="HzS-Zk-Uqe"/>
                             </connections>
