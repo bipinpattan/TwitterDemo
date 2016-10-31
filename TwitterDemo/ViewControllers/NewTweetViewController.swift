@@ -62,11 +62,16 @@ class NewTweetViewController: UIViewController, UITextViewDelegate {
         self.tweetTextView.delegate = self
         self.tweetTextView.text = ""
         self.tweetTextView.becomeFirstResponder()
+        
+        // fix color of nav controller
+        navigationController?.navigationBar.barTintColor = UIColor.init(colorLiteralRed: 63/255, green: 205/255, blue: 253/255, alpha: 1.0);
+        navigationController?.navigationBar.tintColor = UIColor.white;
+        navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white]
     }
     
     func refreshUI() {
         charsLeft = 140 - tweetTextView.text.characters.count
-        self.navigationItem.title = "Compose \(charsLeft)"
+        self.navigationItem.title = "\(charsLeft)"
     }
     
     /*

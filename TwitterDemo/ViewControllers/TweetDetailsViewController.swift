@@ -67,5 +67,11 @@ class TweetDetailsViewController: UIViewController {
         replyButton.setImage(UIImage(named: "reply"), for: .normal)
         retweetButton.setImage(UIImage(named: "retweet"), for: .normal)
         favoriteButton.setImage(UIImage(named: "favorite"), for: .normal)
+        
+        // fix color of nav controller
+        navigationController?.navigationBar.barTintColor = UIColor.init(colorLiteralRed: 63/255, green: 205/255, blue: 253/255, alpha: 1.0);
+        navigationController?.navigationBar.tintColor = UIColor.white;
+        navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white, ]
+        
     }
 }

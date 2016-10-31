@@ -124,6 +124,10 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
         loadingMoreView!.isHidden = true
         tableView.addSubview(loadingMoreView!)
         
+        // fix color of nav controller
+        navigationController?.navigationBar.barTintColor = UIColor.init(colorLiteralRed: 63/255, green: 205/255, blue: 253/255, alpha: 1.0);
+        navigationController?.navigationBar.tintColor = UIColor.white;
+        navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white]
     }
     
     func startNetworkActivity() {
