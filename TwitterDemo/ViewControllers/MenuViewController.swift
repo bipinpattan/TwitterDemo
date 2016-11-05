@@ -10,9 +10,9 @@ import UIKit
 
 class MenuViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var tableView: UITableView!
-    private let titles = ["Red", "Green", "Blue"]
+    private let titles = ["Tweets", "Green", "Blue"]
     var hamburgerViewController: HamburgerViewController!
-    private var redNavigationController: UIViewController!
+    private var tweetsNavigationController: UIViewController!
     private var greenNavigationController: UIViewController!
     private var blueNavigationController: UIViewController!
     private var menuItems: [UIViewController] = []
@@ -31,13 +31,13 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
         tableView.delegate = self
         tableView.dataSource = self
         let storyBoard = UIStoryboard(name: "Main", bundle: nil)
-//        redNavigationController = storyBoard.instantiateViewController(withIdentifier: "RedNavigationController")
+        tweetsNavigationController = storyBoard.instantiateViewController(withIdentifier: "TweetsNavigationViewController")
+        menuItems.append(tweetsNavigationController)
 //        greenNavigationController = storyBoard.instantiateViewController(withIdentifier: "GreenNavigationController")
 //        blueNavigationController = storyBoard.instantiateViewController(withIdentifier: "BlueNavigationController")
-//        menuItems.append(redNavigationController)
 //        menuItems.append(greenNavigationController)
 //        menuItems.append(blueNavigationController)
-//        hamburgerViewController.contentViewController = menuItems[0]
+        hamburgerViewController.contentViewController = menuItems[0]
     }
     
     // Mark: - Delegates
