@@ -12,6 +12,9 @@
 		1B356E881DCE5BA9008DADB5 /* HamburgerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B356E851DCE5BA9008DADB5 /* HamburgerViewController.swift */; };
 		1B356E891DCE5BA9008DADB5 /* MenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B356E861DCE5BA9008DADB5 /* MenuCell.swift */; };
 		1B356E8A1DCE5BA9008DADB5 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B356E871DCE5BA9008DADB5 /* MenuViewController.swift */; };
+		1B356E8E1DCE6964008DADB5 /* mentions.png in Resources */ = {isa = PBXBuildFile; fileRef = 1B356E8B1DCE6964008DADB5 /* mentions.png */; };
+		1B356E8F1DCE6964008DADB5 /* profile.png in Resources */ = {isa = PBXBuildFile; fileRef = 1B356E8C1DCE6964008DADB5 /* profile.png */; };
+		1B356E901DCE6964008DADB5 /* timeline.png in Resources */ = {isa = PBXBuildFile; fileRef = 1B356E8D1DCE6964008DADB5 /* timeline.png */; };
 		1B4011B91DBEE52000DC3658 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B4011B81DBEE52000DC3658 /* AppDelegate.swift */; };
 		1B4011BE1DBEE52000DC3658 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B4011BC1DBEE52000DC3658 /* Main.storyboard */; };
 		1B4011C01DBEE52000DC3658 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1B4011BF1DBEE52000DC3658 /* Assets.xcassets */; };
@@ -36,6 +39,9 @@
 		1B356E851DCE5BA9008DADB5 /* HamburgerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HamburgerViewController.swift; path = ViewControllers/HamburgerViewController.swift; sourceTree = "<group>"; };
 		1B356E861DCE5BA9008DADB5 /* MenuCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MenuCell.swift; path = ViewControllers/MenuCell.swift; sourceTree = "<group>"; };
 		1B356E871DCE5BA9008DADB5 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MenuViewController.swift; path = ViewControllers/MenuViewController.swift; sourceTree = "<group>"; };
+		1B356E8B1DCE6964008DADB5 /* mentions.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mentions.png; sourceTree = "<group>"; };
+		1B356E8C1DCE6964008DADB5 /* profile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = profile.png; sourceTree = "<group>"; };
+		1B356E8D1DCE6964008DADB5 /* timeline.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = timeline.png; sourceTree = "<group>"; };
 		1B4011B51DBEE52000DC3658 /* TwitterDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TwitterDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1B4011B81DBEE52000DC3658 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1B4011BD1DBEE52000DC3658 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -90,6 +96,9 @@
 		1B32D30C1DC31BC40064E537 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				1B356E8B1DCE6964008DADB5 /* mentions.png */,
+				1B356E8C1DCE6964008DADB5 /* profile.png */,
+				1B356E8D1DCE6964008DADB5 /* timeline.png */,
 				1BF0769A1DC470370070233A /* favorite.png */,
 				1BF0769B1DC470370070233A /* reply.png */,
 				1BF0769C1DC470370070233A /* retweet.png */,
@@ -238,10 +247,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1B356E901DCE6964008DADB5 /* timeline.png in Resources */,
 				1B32D30E1DC31BC40064E537 /* twitter-logo.png in Resources */,
 				1BF0769D1DC470370070233A /* favorite.png in Resources */,
 				1B4011C31DBEE52000DC3658 /* LaunchScreen.storyboard in Resources */,
 				1B4011C01DBEE52000DC3658 /* Assets.xcassets in Resources */,
+				1B356E8F1DCE6964008DADB5 /* profile.png in Resources */,
+				1B356E8E1DCE6964008DADB5 /* mentions.png in Resources */,
 				1BF0769F1DC470370070233A /* retweet.png in Resources */,
 				1BF0769E1DC470370070233A /* reply.png in Resources */,
 				1B4011BE1DBEE52000DC3658 /* Main.storyboard in Resources */,

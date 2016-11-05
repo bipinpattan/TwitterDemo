@@ -10,7 +10,8 @@ import UIKit
 
 class MenuViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var tableView: UITableView!
-    private let titles = ["Tweets", "Green", "Blue"]
+    private let titles = ["Profile", "Timeline", "Mentions"]
+    private let images = [UIImage(named:"profile.png"), UIImage(named:"timeline.png"), UIImage(named:"mentions.png")]
     var hamburgerViewController: HamburgerViewController!
     private var tweetsNavigationController: UIViewController!
     private var greenNavigationController: UIViewController!
@@ -49,6 +50,7 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MenuCell", for: indexPath) as! MenuCell
         cell.menuTitleLabel.text = titles[indexPath.row]
+        cell.menuImageView.image = images[indexPath.row]
         return cell
     }
     
