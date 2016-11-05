@@ -12,7 +12,10 @@ import BDBOAuth1Manager
 class TwitterManager: BDBOAuth1SessionManager {
     
     static let userDidLogoutNotification = NSNotification.Name("userDidLogoutNotification")
-
+    static let homeTimelinePath = "home_timeline.json"
+    static let mentionsTimelinePath = "mentions_timeline.json"
+    static let userTimelinePath = "user_timeline.json"
+    
     static let sharedInstance = TwitterManager(baseURL: URL(string: "https://api.twitter.com"), consumerKey: "n1sYcM9yEWQaSf0jRaRZ1BA7u", consumerSecret: "Nm11u8ySaXZxha7BZSXhXiJ0d6H00vjJlHnXhim2Joq44KxMX2")
     
     var loginSucess: (() -> ())?
@@ -100,6 +103,23 @@ class TwitterManager: BDBOAuth1SessionManager {
     
     func userTimeline(screenName: String!, success: @escaping ([Tweet]) -> (), failure: @escaping (NSError) -> ()) {
         _ = get("1.1/statuses/user_timeline.json", parameters: ["screen_name" : screenName], progress: nil,
+                success: { (task: URLSessionDataTask, response: Any?) in
+                    let dictionaries = response as! [NSDictionary]
+                    let tweets = Tweet.tweetsWithArray(dictionaries: dictionaries)
+                    success(tweets)
+            },
+                failure: { (task:URLSessionDataTask?, error: Error) in
+                    failure(error as NSError)
+        })
+    }
+    
+    func timeline(path: String!, screenName: String?, success: @escaping ([Tweet]) -> (), failure: @escaping (NSError) -> ()) {
+        var params = [ String : String]()
+        if let screenName = screenName {
+            params = ["screen_name" : screenName]
+        }
+        let urlPath = "1.1/statuses/\(path!)"
+        _ = get(urlPath, parameters: params, progress: nil,
                 success: { (task: URLSessionDataTask, response: Any?) in
                     let dictionaries = response as! [NSDictionary]
                     let tweets = Tweet.tweetsWithArray(dictionaries: dictionaries)

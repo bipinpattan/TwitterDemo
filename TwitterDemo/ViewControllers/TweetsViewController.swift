@@ -14,6 +14,7 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
     var loadingMoreView: ActivityView?
     var isMoreDataLoading = false
     var refreshControl = UIRefreshControl()
+    var timelinePath: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -132,7 +133,7 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
     
     func startNetworkActivity() {
         self.loadingMoreView!.startAnimating()
-        TwitterManager.sharedInstance?.homeTimeline(
+        TwitterManager.sharedInstance?.timeline(path: timelinePath, screenName: nil, 
             success: { (tweets: [Tweet]) in
                 self.tweets.append(contentsOf: tweets)
                 self.isMoreDataLoading = false
