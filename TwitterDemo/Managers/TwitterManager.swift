@@ -86,6 +86,30 @@ class TwitterManager: BDBOAuth1SessionManager {
                                 })
     }
 
+    func mentionsTimeline(success: @escaping ([Tweet]) -> (), failure: @escaping (NSError) -> ()) {
+        _ = get("1.1/statuses/mentions_timeline.json", parameters: nil, progress: nil,
+                success: { (task: URLSessionDataTask, response: Any?) in
+                    let dictionaries = response as! [NSDictionary]
+                    let tweets = Tweet.tweetsWithArray(dictionaries: dictionaries)
+                    success(tweets)
+            },
+                failure: { (task:URLSessionDataTask?, error: Error) in
+                    failure(error as NSError)
+        })
+    }
+    
+    func userTimeline(screenName: String!, success: @escaping ([Tweet]) -> (), failure: @escaping (NSError) -> ()) {
+        _ = get("1.1/statuses/user_timeline.json", parameters: ["screen_name" : screenName], progress: nil,
+                success: { (task: URLSessionDataTask, response: Any?) in
+                    let dictionaries = response as! [NSDictionary]
+                    let tweets = Tweet.tweetsWithArray(dictionaries: dictionaries)
+                    success(tweets)
+            },
+                failure: { (task:URLSessionDataTask?, error: Error) in
+                    failure(error as NSError)
+        })
+    }
+    
     func updateStatus(statusText status: String!, success: @escaping (Tweet) -> (), failure: @escaping (NSError) -> ()) {
         let queryParams = ["status" : status!];
         _ = post("1.1/statuses/update.json", parameters: queryParams, progress: nil,
