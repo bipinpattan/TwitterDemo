@@ -15,6 +15,7 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
     var isMoreDataLoading = false
     var refreshControl = UIRefreshControl()
     var timelinePath: String!
+    var vcTitle: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -118,6 +119,7 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
         tableView.estimatedRowHeight = 120
         refreshControl.addTarget(self, action: #selector(refreshControlAction(refreshControl:)), for: UIControlEvents.valueChanged)
         tableView.insertSubview(self.refreshControl, at: 0)
+        navigationItem.title = vcTitle
         
         // Set up Infinite Scroll loading indicator
         let frame = CGRect(x: 0, y: tableView.contentSize.height, width: tableView.bounds.size.width, height: ActivityView.defaultHeight)

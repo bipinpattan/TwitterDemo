@@ -41,6 +41,7 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
         menuItems.append(tweetsNavigationController)
         let tweetsVC = tweetsNavigationController.viewControllers[0] as! TweetsViewController
         tweetsVC.timelinePath = TwitterManager.homeTimelinePath
+        tweetsVC.vcTitle = "Home"
 
         mentionsNavigationController = storyBoard.instantiateViewController(withIdentifier: "TweetsNavigationViewController") as! UINavigationController
         menuItems.append(mentionsNavigationController)
@@ -67,9 +68,11 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
         let tweetsVC = navController.viewControllers[0] as! TweetsViewController
         if indexPath.row == 0 {
             tweetsVC.timelinePath = TwitterManager.homeTimelinePath
+            tweetsVC.vcTitle = "Home"
         }
         else if indexPath.row == 1 {
             tweetsVC.timelinePath = TwitterManager.mentionsTimelinePath
+            tweetsVC.vcTitle = "Mentions"
         }
         hamburgerViewController.contentViewController = menuItems[indexPath.row]
     }
