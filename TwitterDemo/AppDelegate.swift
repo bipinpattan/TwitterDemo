@@ -19,14 +19,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         if User.currentUser != nil {
             print("User currently logged in")
+            // Override point for customization after application launch.
             let storyBoard = UIStoryboard(name: "Main", bundle: nil)
-            let vc = storyBoard.instantiateViewController(withIdentifier: "TweetsNavigationViewController")
-            window?.rootViewController = vc
-            NotificationCenter.default.addObserver(forName: TwitterManager.userDidLogoutNotification, object: nil, queue: OperationQueue.main, using: { (Notification) in
-                let storyBoard = UIStoryboard(name: "Main", bundle: nil)
-                let vc = storyBoard.instantiateInitialViewController()
-                self.window?.rootViewController = vc
-            })
+            let hamburgerViewController = storyBoard.instantiateViewController(withIdentifier: "HamburgerViewController") as! HamburgerViewController
+            let menuViewController = storyBoard.instantiateViewController(withIdentifier: "MenuViewController") as! MenuViewController
+            menuViewController.hamburgerViewController = hamburgerViewController
+            hamburgerViewController.menuViewController = menuViewController
+            self.window?.rootViewController = hamburgerViewController
+            
+            //            let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+//            let vc = storyBoard.instantiateViewController(withIdentifier: "TweetsNavigationViewController")
+//            window?.rootViewController = vc
+//            NotificationCenter.default.addObserver(forName: TwitterManager.userDidLogoutNotification, object: nil, queue: OperationQueue.main, using: { (Notification) in
+//                let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+//                let vc = storyBoard.instantiateInitialViewController()
+//                self.window?.rootViewController = vc
+//            })
         }
         else {
             print("No user logged in.")
