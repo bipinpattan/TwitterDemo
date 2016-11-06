@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TweetsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate, NewTweetViewControllerDelegate {
+class TweetsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate, NewTweetViewControllerDelegate, TweetCellProtocol {
     var tweets = [Tweet]()
     @IBOutlet var tableView: UITableView!
     var loadingMoreView: ActivityView?
@@ -63,6 +63,7 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = self.tableView.dequeueReusableCell(withIdentifier: "TweetCell", for: indexPath) as! TweetCell
         cell.tweet = tweets[indexPath.row]
+        cell.delegate = self
         return cell
     }
     
@@ -90,6 +91,13 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
                 loadingMoreView!.startAnimating()
             }
         }
+    }
+    
+    func tweetCell(cell: TweetCell, wantsToShowPorfile withUser: User!) {
+        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+        let profileViewController = storyBoard.instantiateViewController(withIdentifier: "ProfileViewController") as! ProfileViewController
+        profileViewController.user = withUser
+        navigationController?.pushViewController(profileViewController, animated: true)
     }
     
     //MARK: NewTweetViewControllerDelegate

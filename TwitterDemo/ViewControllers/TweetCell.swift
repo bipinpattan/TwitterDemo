@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol TweetCellProtocol : class {
+    func tweetCell(cell: TweetCell, wantsToShowPorfile withUser: User!)
+}
+
 class TweetCell: UITableViewCell {
 
     @IBOutlet weak var profileImageView: UIImageView!
@@ -17,10 +21,18 @@ class TweetCell: UITableViewCell {
     @IBOutlet weak var tweetTextLabel: UILabel!
     @IBOutlet weak var favoritesNumberLabel: UILabel!
     @IBOutlet weak var retweetsNumberLabel: UILabel!
+    weak var delegate: TweetCellProtocol?
+    
+    @IBAction func profileButtonTapped(_ sender: AnyObject) {
+        print("Profile Button Tapped")
+        delegate?.tweetCell(cell: self, wantsToShowPorfile: tweet.user)
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        let tapGR = UITapGestureRecognizer(target: self, action: #selector(TweetCell.onProfileImageTapped))
+        profileImageView.addGestureRecognizer(tapGR)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -47,6 +59,11 @@ class TweetCell: UITableViewCell {
             favoritesNumberLabel.text = "\(tweet.favoritesCount)"
             retweetsNumberLabel.text = "\(tweet.retweetCount)"
         }
+    }
+    
+    func onProfileImageTapped(panGestureRecognizer: UIPanGestureRecognizer) {
+        print("Profile Image Tapped")
+        
     }
     
     func timeFormat(withDate date: Date?) -> String {

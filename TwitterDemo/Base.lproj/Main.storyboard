@@ -130,6 +130,13 @@
                                             <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MnS-1C-aa4">
+                                            <frame key="frameInset" minX="12" minY="8" width="50" height="50"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <connections>
+                                                <action selector="profileButtonTapped:" destination="H6A-hM-d9e" eventType="touchUpInside" id="XsS-gn-fQW"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
                                     <constraints>
                                         <constraint firstAttribute="bottom" secondItem="V0H-1H-HYO" secondAttribute="bottom" constant="4" id="0eJ-iy-LOw"/>
@@ -235,7 +242,7 @@
         <!--Profile-->
         <scene sceneID="B7a-Mj-qhb">
             <objects>
-                <viewController id="asq-e7-rq2" customClass="ProfileViewController" customModule="TwitterDemo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ProfileViewController" id="asq-e7-rq2" customClass="ProfileViewController" customModule="TwitterDemo" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="YVN-0u-1K8"/>
                         <viewControllerLayoutGuide type="bottom" id="Fy2-zu-OuQ"/>
