@@ -251,7 +251,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0UN-eQ-UkE">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="twitter-birds-banner.png" translatesAutoresizingMaskIntoConstraints="NO" id="0UN-eQ-UkE">
                                 <constraints>
                                     <constraint firstAttribute="height" constant="125" id="Jon-tT-UUj"/>
                                 </constraints>
@@ -668,6 +668,7 @@
         <image name="profile.png" width="240" height="240"/>
         <image name="reply.png" width="72" height="72"/>
         <image name="retweet.png" width="74" height="74"/>
+        <image name="twitter-birds-banner.png" width="1102" height="521"/>
         <image name="twitter-logo.png" width="240" height="240"/>
     </resources>
 </document>

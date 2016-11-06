@@ -31,6 +31,7 @@
 		1BF0769D1DC470370070233A /* favorite.png in Resources */ = {isa = PBXBuildFile; fileRef = 1BF0769A1DC470370070233A /* favorite.png */; };
 		1BF0769E1DC470370070233A /* reply.png in Resources */ = {isa = PBXBuildFile; fileRef = 1BF0769B1DC470370070233A /* reply.png */; };
 		1BF0769F1DC470370070233A /* retweet.png in Resources */ = {isa = PBXBuildFile; fileRef = 1BF0769C1DC470370070233A /* retweet.png */; };
+		1BFFD0A31DCEFB6C00858992 /* twitter-birds-banner.png in Resources */ = {isa = PBXBuildFile; fileRef = 1BFFD0A21DCEFB6C00858992 /* twitter-birds-banner.png */; };
 		FCA3A31E66CE84DC6D75F35A /* Pods_TwitterDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD4936EFCC212A62BF37D32F /* Pods_TwitterDemo.framework */; };
 /* End PBXBuildFile section */
 
@@ -62,6 +63,7 @@
 		1BF0769B1DC470370070233A /* reply.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = reply.png; sourceTree = "<group>"; };
 		1BF0769C1DC470370070233A /* retweet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = retweet.png; sourceTree = "<group>"; };
 		1BF076A01DC470C80070233A /* TwitterDemo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TwitterDemo.entitlements; sourceTree = "<group>"; };
+		1BFFD0A21DCEFB6C00858992 /* twitter-birds-banner.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "twitter-birds-banner.png"; sourceTree = "<group>"; };
 		42BC905C50A19F38A93B750A /* Pods-TwitterDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TwitterDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TwitterDemo/Pods-TwitterDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		4C594B7F97EE5DDA99294669 /* Pods-TwitterDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TwitterDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-TwitterDemo/Pods-TwitterDemo.release.xcconfig"; sourceTree = "<group>"; };
 		CD4936EFCC212A62BF37D32F /* Pods_TwitterDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TwitterDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -99,6 +101,7 @@
 		1B32D30C1DC31BC40064E537 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				1BFFD0A21DCEFB6C00858992 /* twitter-birds-banner.png */,
 				1B356E8B1DCE6964008DADB5 /* mentions.png */,
 				1B356E8C1DCE6964008DADB5 /* profile.png */,
 				1B356E8D1DCE6964008DADB5 /* timeline.png */,
@@ -253,6 +256,7 @@
 				1B356E901DCE6964008DADB5 /* timeline.png in Resources */,
 				1B32D30E1DC31BC40064E537 /* twitter-logo.png in Resources */,
 				1BF0769D1DC470370070233A /* favorite.png in Resources */,
+				1BFFD0A31DCEFB6C00858992 /* twitter-birds-banner.png in Resources */,
 				1B4011C31DBEE52000DC3658 /* LaunchScreen.storyboard in Resources */,
 				1B4011C01DBEE52000DC3658 /* Assets.xcassets in Resources */,
 				1B356E8F1DCE6964008DADB5 /* profile.png in Resources */,
