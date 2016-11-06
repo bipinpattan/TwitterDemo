@@ -14,7 +14,7 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
     private let images = [UIImage(named:"profile.png"),
                           UIImage(named:"timeline.png"),
                           UIImage(named:"mentions.png")]
-    var hamburgerViewController: HamburgerViewController!
+    weak var hamburgerViewController: HamburgerViewController!
     private var profileNavigationController: UINavigationController!
     private var tweetsNavigationController: UINavigationController!
     private var mentionsNavigationController: UINavigationController!
