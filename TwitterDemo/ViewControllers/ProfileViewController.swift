@@ -48,15 +48,9 @@ class ProfileViewController: UIViewController {
         if let bannerURL = user?.bannerUrl {
             backgroundImageView.setImageWith(bannerURL)
         }
-        if let numTweets = user?.tweetCount {
-            tweetsNumberLabel.text = "\(numTweets)"
-        }
-        if let numFollowing = user?.followingCount {
-            followingNumberLabel.text = "\(numFollowing)"
-        }
-        if let numFollowers = user?.followersCount {
-            followersNumberLabel.text = "\(numFollowers)"
-        }
+        tweetsNumberLabel.text = numbersLabel(num: user?.tweetCount)
+        followingNumberLabel.text = numbersLabel(num: user?.followingCount)
+        followersNumberLabel.text = numbersLabel(num: user?.followersCount)
         
         let storyBoard = UIStoryboard(name: "Main", bundle: nil)
         tweetsViewController = storyBoard.instantiateViewController(withIdentifier: "TweetsViewController") as! TweetsViewController
@@ -68,6 +62,18 @@ class ProfileViewController: UIViewController {
         view.layoutIfNeeded()
     }
     
+    func numbersLabel(num: Int?) -> String {
+        if let num = num {
+            if num < 999 {
+                return "\(num)"
+            }
+            else if num < 1000000 {
+                return "\(num/1000)k"
+            }
+            return "\(num/1000000)m"
+        }
+        return "0"
+    }
     /*
     // MARK: - Navigation
 
