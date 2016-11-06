@@ -16,6 +16,7 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
     var refreshControl = UIRefreshControl()
     var timelinePath: String!
     var vcTitle: String!
+    var userScreenName: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,6 +52,10 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
     
     // MARK:- Delegate callbacks
     // MARK: UITableViewDataSource
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return tweets.count;
     }
@@ -135,7 +140,7 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
     
     func startNetworkActivity() {
         self.loadingMoreView!.startAnimating()
-        TwitterManager.sharedInstance?.timeline(path: timelinePath, screenName: nil, 
+        TwitterManager.sharedInstance?.timeline(path: timelinePath, screenName: userScreenName,
             success: { (tweets: [Tweet]) in
                 self.tweets.append(contentsOf: tweets)
                 self.isMoreDataLoading = false

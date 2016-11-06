@@ -9,13 +9,15 @@
 import UIKit
 
 class ProfileViewController: UIViewController {
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var handleLabel: UILabel!
+    @IBOutlet weak var backgroundImageView: UIImageView!
     @IBOutlet weak var userImageView: UIImageView!
     @IBOutlet weak var tweetsNumberLabel: UILabel!
     @IBOutlet weak var followingNumberLabel: UILabel!
     @IBOutlet weak var followersNumberLabel: UILabel!
-    @IBOutlet weak var handleLabel: UILabel!
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var backgroundImageView: UIImageView!
+    @IBOutlet weak var contentView: UIView!
+    var tweetsViewController: TweetsViewController!
     var user: User?
     
     override func viewDidLoad() {
@@ -55,6 +57,15 @@ class ProfileViewController: UIViewController {
         if let numFollowers = user?.followersCount {
             followersNumberLabel.text = "\(numFollowers)"
         }
+        
+        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+        tweetsViewController = storyBoard.instantiateViewController(withIdentifier: "TweetsViewController") as! TweetsViewController
+        tweetsViewController.timelinePath = TwitterManager.userTimelinePath
+        tweetsViewController.userScreenName = user?.screenName
+        tweetsViewController.willMove(toParentViewController: self)
+        contentView.addSubview(tweetsViewController.view)
+        tweetsViewController.didMove(toParentViewController: self)
+        view.layoutIfNeeded()
     }
     
     /*

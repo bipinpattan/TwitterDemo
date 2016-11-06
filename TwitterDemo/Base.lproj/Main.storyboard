@@ -59,7 +59,7 @@
         <!--Home-->
         <scene sceneID="Byw-4O-YQX">
             <objects>
-                <viewController id="22T-JR-zks" customClass="TweetsViewController" customModule="TwitterDemo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TweetsViewController" id="22T-JR-zks" customClass="TweetsViewController" customModule="TwitterDemo" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="120" sectionHeaderHeight="28" sectionFooterHeight="28" id="EtJ-0y-u55">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -83,7 +83,7 @@
                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="260" text="History In Pictures" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KHG-jW-sY1">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="260" text="History In Pictures" textAlignment="natural" lineBreakMode="middleTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="KHG-jW-sY1">
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                             <nil key="textColor"/>
@@ -334,6 +334,7 @@
                     <navigationItem key="navigationItem" title="Profile" id="gFw-5F-Ij0"/>
                     <connections>
                         <outlet property="backgroundImageView" destination="0UN-eQ-UkE" id="35a-Wq-5MW"/>
+                        <outlet property="contentView" destination="sNZ-dW-aEb" id="GKh-Pm-1Wj"/>
                         <outlet property="followersNumberLabel" destination="PRc-7f-9Pn" id="cti-NJ-J7g"/>
                         <outlet property="followingNumberLabel" destination="Szq-Bg-eWs" id="lps-om-VkQ"/>
                         <outlet property="handleLabel" destination="slU-Cr-MgW" id="uNU-iU-roZ"/>
