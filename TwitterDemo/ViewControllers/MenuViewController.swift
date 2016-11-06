@@ -10,11 +10,12 @@ import UIKit
 
 class MenuViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var tableView: UITableView!
-    private let titles = ["Profile", "Mentions"]
+    private let titles = ["Profile", "Home", "Mentions"]
     private let images = [UIImage(named:"profile.png"),
-                          //UIImage(named:"timeline.png"),
+                          UIImage(named:"timeline.png"),
                           UIImage(named:"mentions.png")]
     var hamburgerViewController: HamburgerViewController!
+    private var profileNavigationController: UINavigationController!
     private var tweetsNavigationController: UINavigationController!
     private var mentionsNavigationController: UINavigationController!
     private var greenNavigationController: UIViewController!
@@ -37,6 +38,10 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         let storyBoard = UIStoryboard(name: "Main", bundle: nil)
         
+        profileNavigationController = storyBoard.instantiateViewController(withIdentifier: "ProfileNavigationViewController") as! UINavigationController
+        menuItems.append(profileNavigationController)
+
+        
         tweetsNavigationController = storyBoard.instantiateViewController(withIdentifier: "TweetsNavigationViewController") as! UINavigationController
         menuItems.append(tweetsNavigationController)
         let tweetsVC = tweetsNavigationController.viewControllers[0] as! TweetsViewController
@@ -46,7 +51,7 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
         mentionsNavigationController = storyBoard.instantiateViewController(withIdentifier: "TweetsNavigationViewController") as! UINavigationController
         menuItems.append(mentionsNavigationController)
 
-        hamburgerViewController.contentViewController = menuItems[0]
+        hamburgerViewController.contentViewController = menuItems[1]
     }
     
     // Mark: - Delegates
@@ -65,12 +70,17 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let navController = menuItems[indexPath.row] as! UINavigationController
-        let tweetsVC = navController.viewControllers[0] as! TweetsViewController
         if indexPath.row == 0 {
+            let profileVC = navController.viewControllers[0] as! ProfileViewController
+            profileVC.user = User.currentUser
+        }
+        if indexPath.row == 1 {
+            let tweetsVC = navController.viewControllers[0] as! TweetsViewController
             tweetsVC.timelinePath = TwitterManager.homeTimelinePath
             tweetsVC.vcTitle = "Home"
         }
-        else if indexPath.row == 1 {
+        else if indexPath.row == 2 {
+            let tweetsVC = navController.viewControllers[0] as! TweetsViewController
             tweetsVC.timelinePath = TwitterManager.mentionsTimelinePath
             tweetsVC.vcTitle = "Mentions"
         }

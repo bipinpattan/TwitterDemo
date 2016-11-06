@@ -15,6 +15,7 @@
 		1B356E8E1DCE6964008DADB5 /* mentions.png in Resources */ = {isa = PBXBuildFile; fileRef = 1B356E8B1DCE6964008DADB5 /* mentions.png */; };
 		1B356E8F1DCE6964008DADB5 /* profile.png in Resources */ = {isa = PBXBuildFile; fileRef = 1B356E8C1DCE6964008DADB5 /* profile.png */; };
 		1B356E901DCE6964008DADB5 /* timeline.png in Resources */ = {isa = PBXBuildFile; fileRef = 1B356E8D1DCE6964008DADB5 /* timeline.png */; };
+		1B356E921DCE9FA8008DADB5 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B356E911DCE9FA8008DADB5 /* ProfileViewController.swift */; };
 		1B4011B91DBEE52000DC3658 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B4011B81DBEE52000DC3658 /* AppDelegate.swift */; };
 		1B4011BE1DBEE52000DC3658 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B4011BC1DBEE52000DC3658 /* Main.storyboard */; };
 		1B4011C01DBEE52000DC3658 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1B4011BF1DBEE52000DC3658 /* Assets.xcassets */; };
@@ -42,6 +43,7 @@
 		1B356E8B1DCE6964008DADB5 /* mentions.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mentions.png; sourceTree = "<group>"; };
 		1B356E8C1DCE6964008DADB5 /* profile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = profile.png; sourceTree = "<group>"; };
 		1B356E8D1DCE6964008DADB5 /* timeline.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = timeline.png; sourceTree = "<group>"; };
+		1B356E911DCE9FA8008DADB5 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileViewController.swift; path = ViewControllers/ProfileViewController.swift; sourceTree = "<group>"; };
 		1B4011B51DBEE52000DC3658 /* TwitterDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TwitterDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1B4011B81DBEE52000DC3658 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1B4011BD1DBEE52000DC3658 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -89,6 +91,7 @@
 				1B32D30F1DC3263A0064E537 /* TweetCell.swift */,
 				1B62891F1DC668A1009FE915 /* NewTweetViewController.swift */,
 				1B6289211DC693B5009FE915 /* TweetDetailsViewController.swift */,
+				1B356E911DCE9FA8008DADB5 /* ProfileViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -364,6 +367,7 @@
 				1B32D3101DC3263A0064E537 /* TweetCell.swift in Sources */,
 				1B356E891DCE5BA9008DADB5 /* MenuCell.swift in Sources */,
 				1B6289221DC693B5009FE915 /* TweetDetailsViewController.swift in Sources */,
+				1B356E921DCE9FA8008DADB5 /* ProfileViewController.swift in Sources */,
 				1BA3C41E1DC1D6CC00B4D12A /* TwitterManager.swift in Sources */,
 				1B7A67141DC1846E00FCF5B0 /* Tweet.swift in Sources */,
 				1B959DAC1DC029E30077972F /* LoginViewController.swift in Sources */,

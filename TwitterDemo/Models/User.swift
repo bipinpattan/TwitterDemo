@@ -14,6 +14,10 @@ class User: NSObject {
     var screenName: String?
     var profileUrl: URL?
     var tagLine: String?
+    var bannerUrl: URL?
+    var followersCount: Int?
+    var followingCount: Int?
+    var tweetCount: Int?
     
     var dictionary: NSDictionary?
     static var kUserDataKeyName = "currentUserData"
@@ -26,12 +30,19 @@ class User: NSObject {
         if let profileUrlString = profileUrlString {
             profileUrl = URL(string: profileUrlString)
         }
+        let bannerUrlString = dictionary["profile_banner_url"] as? String
+        if let bannerUrlString = bannerUrlString {
+            bannerUrl = URL(string: bannerUrlString)
+        }
+        followersCount = dictionary["followers_count"] as? Int
+        followingCount = dictionary["friends_count"] as? Int
+        tweetCount = dictionary["statuses_count"] as? Int
         name = dictionary["name"] as? String
         tagLine = dictionary["description"] as? String
     }
     
     override var description: String {
-        return "name: \(name)\nscreenName: \(screenName)\nprofileUrl: \(profileUrl)\ntagLine: \(tagLine)"
+        return "name: \(name)\nscreenName: \(screenName)\nprofileUrl: \(profileUrl)\ntagLine: \(tagLine)\nbannerUrl: \(bannerUrl)\ntweets: \(tweetCount)\nfollowers: \(followersCount)\nfollowing: \(followingCount)"
     }
     
     static var _currentUser: User?
